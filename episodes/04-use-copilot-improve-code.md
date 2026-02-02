@@ -98,6 +98,8 @@ As we'll see shortly, these coding style guidelines will inform future refactori
 
 :::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::: challenge
 
 ## Inline Suggestions for Code
