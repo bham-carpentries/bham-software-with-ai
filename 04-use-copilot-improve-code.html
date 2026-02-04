@@ -311,7 +311,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>How to use Copilot to Improve an Existing Codebase</h1>
-        <p>Last updated on 2026-02-03 |
+        <p>Last updated on 2026-02-04 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/04-use-copilot-improve-code.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -439,7 +439,7 @@ add/amend as you see fit, perhaps to fit your coding style.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>For example:</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -488,7 +488,7 @@ inline suggestions are being made, e.g.:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>For example:</li>
 </ol><div class="codewrapper sourceCode" id="cb5">
@@ -556,13 +556,13 @@ such tools.</p>
 </div>
 </div>
 </div>
-<div id="refactor" class="callout challenge">
+<div id="a-small-refactor" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Challenge</span>
-<div id="refactor" class="callout-inner">
-<h3 class="callout-title">Refactor!</h3>
+<div id="a-small-refactor" class="callout-inner">
+<h3 class="callout-title">A Small Refactor!</h3>
 <div class="callout-content">
 <p>3 mins.</p>
 <p>Let’s assume we want to rename the <code>axes</code> variables to
@@ -579,7 +579,7 @@ correctly?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 <p>Select the code from the first <code>axes1</code> definition to
@@ -624,6 +624,313 @@ a junior developer taking on a task, rather than a pair programmer
 responding line-by-line. Note the increase in authority to modify code,
 which represents a much greater risk: the impact of changes is greater
 and requires more careful (and potentially more involved) review.</p>
+<p>In the last episode we looked at the suggestions made by two Copilot
+models to improve the code. Let’s now use agent mode to do this as a
+refactoring activity, directly amending our code with the goal to
+improve its readability.</p>
+<ol style="list-style-type: decimal"><li>Set Copilot’s mode to <code>Agent</code>
+</li>
+<li>Select a model you’d like to use</li>
+<li>Enter the following prompt:
+<code>Refactor this code to improve it's modularity and readability</code>
+</li>
+<li>Press <code>Enter</code>
+</li>
+<li>Once suggested improvements appear, review the changes and either:
+<ul><li>If you agree with them and think they are an improvement on the
+original code, <code>Keep</code> the suggestions</li>
+<li>If you don’t agree with them, cancel the suggestions and select the
+circular <code>Retry</code> icon at the bottom left of the chat response
+until you get something more acceptable</li>
+</ul></li>
+</ol><p>One example of output:</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="co">Analyze and visualize inflammation data.</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">This script reads inflammation CSV files from data/, computes statistics</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">(mean, max, min) across patients for each day, and saves corresponding</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">plots as PNG files.</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="kw">def</span> load_inflammation_data(filename: <span class="bu">str</span>) <span class="op">-&gt;</span> np.ndarray:</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>    <span class="co">"""Load inflammation data from a CSV file.</span></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="co">        filename: Path to the CSV file containing inflammation data.</span></span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a><span class="co">        A 2D numpy array where rows are patients and columns are days.</span></span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a>    <span class="cf">return</span> np.loadtxt(fname<span class="op">=</span>filename, delimiter<span class="op">=</span><span class="st">','</span>)</span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a><span class="kw">def</span> create_statistics_plot(data: np.ndarray, figure_size: <span class="bu">tuple</span> <span class="op">=</span> (<span class="fl">10.0</span>, <span class="fl">3.0</span>)) <span class="op">-&gt;</span> plt.Figure:</span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a>    <span class="co">"""Create a figure with three subplots showing mean, max, and min values.</span></span>
+<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a><span class="co">        data: A 2D numpy array of inflammation values.</span></span>
+<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a><span class="co">        figure_size: Tuple of (width, height) for the figure in inches.</span></span>
+<span id="cb9-34"><a href="#cb9-34" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb9-35"><a href="#cb9-35" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb9-36"><a href="#cb9-36" tabindex="-1"></a><span class="co">        The matplotlib Figure object containing the three subplots.</span></span>
+<span id="cb9-37"><a href="#cb9-37" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb9-38"><a href="#cb9-38" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>figure_size)</span>
+<span id="cb9-39"><a href="#cb9-39" tabindex="-1"></a>    </span>
+<span id="cb9-40"><a href="#cb9-40" tabindex="-1"></a>    <span class="co"># Create subplots for mean, max, and min statistics</span></span>
+<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a>    subplots <span class="op">=</span> [fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">4</span>)]</span>
+<span id="cb9-42"><a href="#cb9-42" tabindex="-1"></a>    </span>
+<span id="cb9-43"><a href="#cb9-43" tabindex="-1"></a>    statistics <span class="op">=</span> [</span>
+<span id="cb9-44"><a href="#cb9-44" tabindex="-1"></a>        (<span class="st">'average'</span>, data.mean(axis<span class="op">=</span><span class="dv">0</span>)),</span>
+<span id="cb9-45"><a href="#cb9-45" tabindex="-1"></a>        (<span class="st">'max'</span>, data.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)),</span>
+<span id="cb9-46"><a href="#cb9-46" tabindex="-1"></a>        (<span class="st">'min'</span>, data.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">0</span>)),</span>
+<span id="cb9-47"><a href="#cb9-47" tabindex="-1"></a>    ]</span>
+<span id="cb9-48"><a href="#cb9-48" tabindex="-1"></a>    </span>
+<span id="cb9-49"><a href="#cb9-49" tabindex="-1"></a>    <span class="cf">for</span> subplot, (label, values) <span class="kw">in</span> <span class="bu">zip</span>(subplots, statistics):</span>
+<span id="cb9-50"><a href="#cb9-50" tabindex="-1"></a>        subplot.set_ylabel(label)</span>
+<span id="cb9-51"><a href="#cb9-51" tabindex="-1"></a>        subplot.plot(values)</span>
+<span id="cb9-52"><a href="#cb9-52" tabindex="-1"></a>    </span>
+<span id="cb9-53"><a href="#cb9-53" tabindex="-1"></a>    fig.tight_layout()</span>
+<span id="cb9-54"><a href="#cb9-54" tabindex="-1"></a>    <span class="cf">return</span> fig</span>
+<span id="cb9-55"><a href="#cb9-55" tabindex="-1"></a></span>
+<span id="cb9-56"><a href="#cb9-56" tabindex="-1"></a></span>
+<span id="cb9-57"><a href="#cb9-57" tabindex="-1"></a><span class="kw">def</span> process_inflammation_file(filename: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb9-58"><a href="#cb9-58" tabindex="-1"></a>    <span class="co">"""Load inflammation data and save a statistics plot.</span></span>
+<span id="cb9-59"><a href="#cb9-59" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-60"><a href="#cb9-60" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb9-61"><a href="#cb9-61" tabindex="-1"></a><span class="co">        filename: Path to the CSV file to process.</span></span>
+<span id="cb9-62"><a href="#cb9-62" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb9-63"><a href="#cb9-63" tabindex="-1"></a>    <span class="bu">print</span>(filename)</span>
+<span id="cb9-64"><a href="#cb9-64" tabindex="-1"></a>    data <span class="op">=</span> load_inflammation_data(filename)</span>
+<span id="cb9-65"><a href="#cb9-65" tabindex="-1"></a>    fig <span class="op">=</span> create_statistics_plot(data)</span>
+<span id="cb9-66"><a href="#cb9-66" tabindex="-1"></a>    output_filename <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">.png"</span></span>
+<span id="cb9-67"><a href="#cb9-67" tabindex="-1"></a>    fig.savefig(output_filename)</span>
+<span id="cb9-68"><a href="#cb9-68" tabindex="-1"></a>    plt.close(fig)</span>
+<span id="cb9-69"><a href="#cb9-69" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" tabindex="-1"></a></span>
+<span id="cb9-71"><a href="#cb9-71" tabindex="-1"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb9-72"><a href="#cb9-72" tabindex="-1"></a>    <span class="co">"""Load and process all inflammation data files."""</span></span>
+<span id="cb9-73"><a href="#cb9-73" tabindex="-1"></a>    filenames <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(<span class="st">'data/inflammation-*.csv'</span>))</span>
+<span id="cb9-74"><a href="#cb9-74" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb9-75"><a href="#cb9-75" tabindex="-1"></a>        process_inflammation_file(filename)</span>
+<span id="cb9-76"><a href="#cb9-76" tabindex="-1"></a></span>
+<span id="cb9-77"><a href="#cb9-77" tabindex="-1"></a></span>
+<span id="cb9-78"><a href="#cb9-78" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb9-79"><a href="#cb9-79" tabindex="-1"></a>    main()</span></code></pre>
+</div>
+<p>So in this instance, we can see that there are a whole swathe of
+changes:</p>
+<ul><li>Modularised the codebase by refactoring into four functions: use of
+a main function called from the top-level script, for loading a CSV
+file, generating a plot for a set of data, and processing a particular
+inflammation file</li>
+<li>Docstrings have been added for each of the functions and the
+module</li>
+<li>The processing of the average, maximum and minimum values has been
+refactored into a loop iterating over a data structure</li>
+<li>The subplots are generated within a loop using <code>zip()</code> to
+provide corresponding pairs of array elements into the loop. If we
+didn’t like this particular style, we might use Edit mode on this
+segment to simpligy it</li>
+</ul><p>Note that it differs substantially from the version shown from a
+similar question made in Ask mode earlier, and whilst it is more
+modular, it’s now 127 lines of code where before it was 32 lines - we
+might consider this to be quite an over-engineered overkill for what</p>
+<div id="what-if-i-dont-get-a-good-response" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="what-if-i-dont-get-a-good-response" class="callout-inner">
+<h3 class="callout-title">What if I don’t get a Good Response?</h3>
+<div class="callout-content">
+<p>If you aren’t getting a good response despite retrying several times,
+it suggests that the prompt is either not reflective of what you’re
+really after or isn’t specific enough, so try amending the request.</p>
+</div>
+</div>
+</div>
+<p>Now once the suggestions have been integrated, we’re still able to
+undo these changes, e.g. either by selecting <code>Edit</code> and
+<code>Undo</code> from the VSCode menu, or pressing
+<code>Ctrl + Z</code> (or <code>Cmd/Windows Key + Z</code>). We’re also
+able to edit a previous prompt in the chat window, perhaps adding more
+specifics for what we want.</p>
+<div id="a-large-refactor" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="a-large-refactor" class="callout-inner">
+<h3 class="callout-title">A Large Refactor!</h3>
+<div class="callout-content">
+<p>5 mins.</p>
+<p>Perhaps the suggestions look generally quite good, but maybe it isn’t
+quite what we’re after.</p>
+<p>Edit the agent mode prompt in the chat (using a model of your choice)
+to include more specificity in the request, for example:</p>
+<ul><li><code>Refactor this code to improve its modularity and readability, using the reST format for docstrings</code></li>
+<li><code>Refactor this code to improve its modularity and readability, and easy to understand for a novice coder</code></li>
+</ul><p>You might want to <code>Retry</code> or amend your prompt a few times
+to obtain something you find acceptable!</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
+</button>
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div class="accordion-body">
+<p>For the second prompt above, for example (note the increased level of
+commenting, more descriptive docstrings, and less complex coding
+patterns for data processing and generating the plots):</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="co">Inflammation Data Visualization Script</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">This script processes inflammation data from CSV files and creates visualizations</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="co">showing average, maximum, and minimum inflammation levels across patients for each day.</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">"""</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="im">import</span> glob</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="kw">def</span> load_inflammation_data(filepath):</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">    Load inflammation data from a CSV file.</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">        filepath (str): Path to the CSV file to load</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">        np.ndarray: 2D array of inflammation data (rows=patients, columns=days)</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a>    data <span class="op">=</span> np.loadtxt(fname<span class="op">=</span>filepath, delimiter<span class="op">=</span><span class="st">','</span>)</span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="kw">def</span> create_statistics_figure(data):</span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="co">    Create a figure with three subplots showing statistics of inflammation data.</span></span>
+<span id="cb10-30"><a href="#cb10-30" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb10-32"><a href="#cb10-32" tabindex="-1"></a><span class="co">        data (np.ndarray): 2D array of inflammation data</span></span>
+<span id="cb10-33"><a href="#cb10-33" tabindex="-1"></a></span>
+<span id="cb10-34"><a href="#cb10-34" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb10-35"><a href="#cb10-35" tabindex="-1"></a><span class="co">        tuple: (figure object, list of subplot axes)</span></span>
+<span id="cb10-36"><a href="#cb10-36" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-37"><a href="#cb10-37" tabindex="-1"></a>    <span class="co"># Create figure with three subplots side by side</span></span>
+<span id="cb10-38"><a href="#cb10-38" tabindex="-1"></a>    fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="fl">10.0</span>, <span class="fl">3.0</span>))</span>
+<span id="cb10-39"><a href="#cb10-39" tabindex="-1"></a></span>
+<span id="cb10-40"><a href="#cb10-40" tabindex="-1"></a>    <span class="co"># Create three subplots for average, max, and min</span></span>
+<span id="cb10-41"><a href="#cb10-41" tabindex="-1"></a>    subplots <span class="op">=</span> [</span>
+<span id="cb10-42"><a href="#cb10-42" tabindex="-1"></a>        fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb10-43"><a href="#cb10-43" tabindex="-1"></a>        fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>),</span>
+<span id="cb10-44"><a href="#cb10-44" tabindex="-1"></a>        fig.add_subplot(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb10-45"><a href="#cb10-45" tabindex="-1"></a>    ]</span>
+<span id="cb10-46"><a href="#cb10-46" tabindex="-1"></a></span>
+<span id="cb10-47"><a href="#cb10-47" tabindex="-1"></a>    <span class="cf">return</span> fig, subplots</span>
+<span id="cb10-48"><a href="#cb10-48" tabindex="-1"></a></span>
+<span id="cb10-49"><a href="#cb10-49" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" tabindex="-1"></a><span class="kw">def</span> plot_statistics(subplots, data):</span>
+<span id="cb10-51"><a href="#cb10-51" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-52"><a href="#cb10-52" tabindex="-1"></a><span class="co">    Plot average, maximum, and minimum statistics on the given subplots.</span></span>
+<span id="cb10-53"><a href="#cb10-53" tabindex="-1"></a></span>
+<span id="cb10-54"><a href="#cb10-54" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb10-55"><a href="#cb10-55" tabindex="-1"></a><span class="co">        subplots (list): List of matplotlib axes objects</span></span>
+<span id="cb10-56"><a href="#cb10-56" tabindex="-1"></a><span class="co">        data (np.ndarray): 2D array of inflammation data</span></span>
+<span id="cb10-57"><a href="#cb10-57" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-58"><a href="#cb10-58" tabindex="-1"></a>    <span class="co"># Calculate statistics across all patients (axis=0)</span></span>
+<span id="cb10-59"><a href="#cb10-59" tabindex="-1"></a>    average <span class="op">=</span> data.mean(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-60"><a href="#cb10-60" tabindex="-1"></a>    maximum <span class="op">=</span> data.<span class="bu">max</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-61"><a href="#cb10-61" tabindex="-1"></a>    minimum <span class="op">=</span> data.<span class="bu">min</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb10-62"><a href="#cb10-62" tabindex="-1"></a></span>
+<span id="cb10-63"><a href="#cb10-63" tabindex="-1"></a>    <span class="co"># Plot average on first subplot</span></span>
+<span id="cb10-64"><a href="#cb10-64" tabindex="-1"></a>    subplots[<span class="dv">0</span>].set_ylabel(<span class="st">'average'</span>)</span>
+<span id="cb10-65"><a href="#cb10-65" tabindex="-1"></a>    subplots[<span class="dv">0</span>].plot(average)</span>
+<span id="cb10-66"><a href="#cb10-66" tabindex="-1"></a></span>
+<span id="cb10-67"><a href="#cb10-67" tabindex="-1"></a>    <span class="co"># Plot maximum on second subplot</span></span>
+<span id="cb10-68"><a href="#cb10-68" tabindex="-1"></a>    subplots[<span class="dv">1</span>].set_ylabel(<span class="st">'max'</span>)</span>
+<span id="cb10-69"><a href="#cb10-69" tabindex="-1"></a>    subplots[<span class="dv">1</span>].plot(maximum)</span>
+<span id="cb10-70"><a href="#cb10-70" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" tabindex="-1"></a>    <span class="co"># Plot minimum on third subplot</span></span>
+<span id="cb10-72"><a href="#cb10-72" tabindex="-1"></a>    subplots[<span class="dv">2</span>].set_ylabel(<span class="st">'min'</span>)</span>
+<span id="cb10-73"><a href="#cb10-73" tabindex="-1"></a>    subplots[<span class="dv">2</span>].plot(minimum)</span>
+<span id="cb10-74"><a href="#cb10-74" tabindex="-1"></a></span>
+<span id="cb10-75"><a href="#cb10-75" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" tabindex="-1"></a><span class="kw">def</span> save_figure(figure, filename):</span>
+<span id="cb10-77"><a href="#cb10-77" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-78"><a href="#cb10-78" tabindex="-1"></a><span class="co">    Save a matplotlib figure as a PNG file.</span></span>
+<span id="cb10-79"><a href="#cb10-79" tabindex="-1"></a></span>
+<span id="cb10-80"><a href="#cb10-80" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb10-81"><a href="#cb10-81" tabindex="-1"></a><span class="co">        figure: matplotlib figure object</span></span>
+<span id="cb10-82"><a href="#cb10-82" tabindex="-1"></a><span class="co">        filename (str): Output filename (will add .png extension)</span></span>
+<span id="cb10-83"><a href="#cb10-83" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-84"><a href="#cb10-84" tabindex="-1"></a>    output_filename <span class="op">=</span> filename <span class="op">+</span> <span class="st">'.png'</span></span>
+<span id="cb10-85"><a href="#cb10-85" tabindex="-1"></a>    figure.savefig(output_filename)</span>
+<span id="cb10-86"><a href="#cb10-86" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Saved visualization: </span><span class="sc">{</span>output_filename<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-87"><a href="#cb10-87" tabindex="-1"></a></span>
+<span id="cb10-88"><a href="#cb10-88" tabindex="-1"></a></span>
+<span id="cb10-89"><a href="#cb10-89" tabindex="-1"></a><span class="kw">def</span> process_inflammation_files(data_directory<span class="op">=</span><span class="st">'data/inflammation-*.csv'</span>):</span>
+<span id="cb10-90"><a href="#cb10-90" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-91"><a href="#cb10-91" tabindex="-1"></a><span class="co">    Process all inflammation CSV files and create visualizations.</span></span>
+<span id="cb10-92"><a href="#cb10-92" tabindex="-1"></a></span>
+<span id="cb10-93"><a href="#cb10-93" tabindex="-1"></a><span class="co">    This function:</span></span>
+<span id="cb10-94"><a href="#cb10-94" tabindex="-1"></a><span class="co">    1. Finds all CSV files matching the pattern</span></span>
+<span id="cb10-95"><a href="#cb10-95" tabindex="-1"></a><span class="co">    2. Loads data from each file</span></span>
+<span id="cb10-96"><a href="#cb10-96" tabindex="-1"></a><span class="co">    3. Creates a figure with statistical plots</span></span>
+<span id="cb10-97"><a href="#cb10-97" tabindex="-1"></a><span class="co">    4. Saves the figure as a PNG file</span></span>
+<span id="cb10-98"><a href="#cb10-98" tabindex="-1"></a></span>
+<span id="cb10-99"><a href="#cb10-99" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb10-100"><a href="#cb10-100" tabindex="-1"></a><span class="co">        data_directory (str): Glob pattern for finding CSV files</span></span>
+<span id="cb10-101"><a href="#cb10-101" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-102"><a href="#cb10-102" tabindex="-1"></a>    <span class="co"># Find all inflammation CSV files</span></span>
+<span id="cb10-103"><a href="#cb10-103" tabindex="-1"></a>    filenames <span class="op">=</span> <span class="bu">sorted</span>(glob.glob(data_directory))</span>
+<span id="cb10-104"><a href="#cb10-104" tabindex="-1"></a></span>
+<span id="cb10-105"><a href="#cb10-105" tabindex="-1"></a>    <span class="co"># Process each file</span></span>
+<span id="cb10-106"><a href="#cb10-106" tabindex="-1"></a>    <span class="cf">for</span> filename <span class="kw">in</span> filenames:</span>
+<span id="cb10-107"><a href="#cb10-107" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Processing: </span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-108"><a href="#cb10-108" tabindex="-1"></a></span>
+<span id="cb10-109"><a href="#cb10-109" tabindex="-1"></a>        <span class="co"># Load data from file</span></span>
+<span id="cb10-110"><a href="#cb10-110" tabindex="-1"></a>        data <span class="op">=</span> load_inflammation_data(filename)</span>
+<span id="cb10-111"><a href="#cb10-111" tabindex="-1"></a></span>
+<span id="cb10-112"><a href="#cb10-112" tabindex="-1"></a>        <span class="co"># Create figure with subplots</span></span>
+<span id="cb10-113"><a href="#cb10-113" tabindex="-1"></a>        fig, subplots <span class="op">=</span> create_statistics_figure(data)</span>
+<span id="cb10-114"><a href="#cb10-114" tabindex="-1"></a></span>
+<span id="cb10-115"><a href="#cb10-115" tabindex="-1"></a>        <span class="co"># Plot statistics on the subplots</span></span>
+<span id="cb10-116"><a href="#cb10-116" tabindex="-1"></a>        plot_statistics(subplots, data)</span>
+<span id="cb10-117"><a href="#cb10-117" tabindex="-1"></a></span>
+<span id="cb10-118"><a href="#cb10-118" tabindex="-1"></a>        <span class="co"># Arrange subplots so labels don't overlap</span></span>
+<span id="cb10-119"><a href="#cb10-119" tabindex="-1"></a>        fig.tight_layout()</span>
+<span id="cb10-120"><a href="#cb10-120" tabindex="-1"></a></span>
+<span id="cb10-121"><a href="#cb10-121" tabindex="-1"></a>        <span class="co"># Save figure as PNG file</span></span>
+<span id="cb10-122"><a href="#cb10-122" tabindex="-1"></a>        save_figure(fig, filename)</span>
+<span id="cb10-123"><a href="#cb10-123" tabindex="-1"></a></span>
+<span id="cb10-124"><a href="#cb10-124" tabindex="-1"></a></span>
+<span id="cb10-125"><a href="#cb10-125" tabindex="-1"></a><span class="co"># Main execution</span></span>
+<span id="cb10-126"><a href="#cb10-126" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb10-127"><a href="#cb10-127" tabindex="-1"></a>    process_inflammation_files()</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -699,8 +1006,8 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-md/04-use-copilot-improve-code.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/04-use-copilot-improve-code.html",
   "dateCreated": "2026-01-13",
-  "dateModified": "2026-02-03",
-  "datePublished": "2026-02-03"
+  "dateModified": "2026-02-04",
+  "datePublished": "2026-02-04"
 }
 
   </script><script>
