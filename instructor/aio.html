@@ -1508,7 +1508,7 @@ and so on.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>Describe the main packages used? e.g.</li>
@@ -1748,7 +1748,7 @@ come to this in the next episode.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Following the exercise, talk through the possible solution to this
 below, highlighting the key similarities and differences between each
@@ -1762,7 +1762,7 @@ response.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 </li></ol>
@@ -1933,7 +1933,7 @@ your work?</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
   <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>For this exercise, send out a shared notes document to the cohort
 (writable by everyone) that is split into two sections: Benefits and
@@ -1949,7 +1949,7 @@ summarise the comments.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Possible benefits:</p>
 <ul>
@@ -2001,7 +2001,7 @@ adapt our day-to-day development to accomodate these changes?</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
   <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
 <div class="accordion-body">
 <p>For this exercise, in the shared notes document have a section for
 participants to add in answers.</p>
@@ -2014,7 +2014,7 @@ participants to add in answers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ul>
 <li>Ensure suggested changes are throughly reviewed understood prior to
@@ -2351,6 +2351,7 @@ such tools.</p>
 </div>
 </div>
 </div>
+<p>FIXME: add a bit on git commit messages in Copilot</p>
 <div id="a-small-refactor" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -2406,6 +2407,34 @@ following: <img src="../fig/copilot-rename-variables.png" class="figure"></p></l
 </ol>
 <p>The code still runs correctly.</p>
 </div>
+</div>
+</div>
+</div>
+<div id="the-importance-of-process" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="the-importance-of-process" class="callout-inner">
+<h3 class="callout-title">The Importance of Process</h3>
+<div class="callout-content">
+<p>Process - the way we do things - is important in software engineering
+because it’s what leads towards reliable outcomes. Without process we
+rely on tacit knowledge and luck. But with process, we get
+repeatability, shared understanding, and the ability to improve over
+time. Good process makes work visible, enforces quality at the right
+moments (design, review, testing, release), and creates feedback loops
+so mistakes are caught early, when they’re cheapest to fix. In science,
+reproducibility is a central tenet of research. So as responsible
+researchers, we need to ensure we apply the same rigour to the software
+we write.</p>
+<p>AI tools like Copilot make this more important, not less. Whilst it
+accelerates code generation, it doesn’t understand intent or
+consequences, so a strong process ensures we use AI in an environment
+that amplifies good engineering habits instead of bypassing them.</p>
+<p>The key principle is that process assigns responsibility to people,
+not tools. Copilot speeds up execution, but process ensures
+accountability, quality, and sustainability.</p>
 </div>
 </div>
 </div>
@@ -2749,6 +2778,72 @@ and ask for thumbs up/down as a reaction to it, and summarise the
 responses:</p>
 <p>Were you able to achieve something that you regard as well written
 code you can understand?</p>
+</div>
+</div>
+</div>
+</div>
+<div id="a-clever-refactor" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="a-clever-refactor" class="callout-inner">
+<h3 class="callout-title">A “Clever” Refactor!</h3>
+<div class="callout-content">
+<p>5 mins.</p>
+<p>Let’s assume that we want to expand this codebase further. Perhaps we
+know that the inflammation data format will change in the future, in
+ways that mean the NumPy library isn’t the ideal processing library of
+choice, and that the Pandas library (which is a more general purpose
+data analysis library) will be a much better fit for this work.</p>
+<p>Using agent mode and a model of your choice, ask Copilot to refactor
+your code to use Pandas instead of NumPy:</p>
+<p>Part 1:</p>
+<ol style="list-style-type: decimal">
+<li>Construct and enter a suitable prompt</li>
+<li>Review and accept the changes</li>
+<li>What do you need to do to be able to re-run the code?</li>
+<li>Does the code generate the correct results?</li>
+</ol>
+<p>Part 2:</p>
+<p>If you already know Pandas, do the changes look sensible? If you
+don’t know Pandas, what are the risks of accepting these changes?</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
+</button>
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div class="accordion-body">
+<p>Part 1:</p>
+<p>Prompt: <code>Modify this code to use Pandas instead of NumPy</code>
+Need to add pandas library to the virtual environment. In a
+terminal:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install pandas</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
+</button>
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div class="accordion-body">
+<p>Part 2:</p>
+<p>If you don’t already know Pandas, there is a considerable risk with
+this type of refactoring: by accepting these modifications, we’re
+including code without understanding the concepts or operations of
+Pandas. This greatly increases the risk that we generate incorrect code,
+and should be avoided.</p>
 </div>
 </div>
 </div>
