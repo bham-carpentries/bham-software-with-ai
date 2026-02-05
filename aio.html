@@ -2766,8 +2766,6 @@ end</li>
 </div>
 </div>
 </div>
-<p>FIXME: summary of differences between model answers and key model
-differences and what they are best used for</p>
 
 <div id="class-discussion-what-are-the-benefits-and-risks" class="callout challenge">
 <div class="callout-square">
@@ -3565,7 +3563,6 @@ patterns for data processing and generating the plots):</p>
 </div>
 </div>
 
-<p>FIXME: add something on reusable prompt files</p>
 <div id="a-clever-refactor" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -3778,6 +3775,86 @@ skeptical approach becomes even more important.</p>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="reusable-code-prompts">Reusable Code Prompts<a class="anchor" aria-label="anchor" href="#reusable-code-prompts"></a>
+</h2>
+<hr class="half-width">
+<p>Reusable prompts in VSCode Copilot are predefined instructions or
+templates that you can quickly insert and use to guide Copilot’s code
+generation or assistance. These prompts help you standardize requests,
+save time, and ensure consistency when working on repetitive tasks or
+when you want Copilot to follow specific patterns.</p>
+<div class="section level3">
+<h3 id="how-reusable-prompts-work">How Reusable Prompts Work<a class="anchor" aria-label="anchor" href="#how-reusable-prompts-work"></a>
+</h3>
+<p>You can create reusable prompts by saving frequently used
+instructions or code templates. These can be stored as snippets,
+comments, or in dedicated prompt files, depending on your workflow and
+the Copilot extension features.</p>
+<p>When you need Copilot to perform a task, you can insert a reusable
+prompt into your code or command palette. Copilot will interpret the
+prompt and generate code or suggestions based on the provided
+context.</p>
+<p>Reusable prompts help you: - Speed up development by avoiding
+repetitive typing - Maintain consistency in code style and structure -
+Share best practices and prompt templates with your team</p>
+<p>Common reusable prompts include requests like “Write a function to…”,
+“Add type annotations to…”, or “Generate unit tests for…”. We then have
+the option to adapt these to our specific project needs.</p>
+<p>Some Copilot extensions or plugins may offer enhanced support for
+managing and sharing reusable prompts, making it easier to organize and
+access them within VSCode.</p>
+<p>Let’s create a reusable prompt now. Our code repository is currently
+lacking a README, so let’s adapt a pre-existing prompt definition. There
+are many reusable and freely available Copilot resources at <a href="https://github.github.com/awesome-copilot/" class="external-link">Awesome GitHub
+Copilot</a>, including agents, reusable prompts, and instruction files,
+all available from a GitHub repository.</p>
+<p>Let’s first obtain a reusable prompt for generating README files.
+Take a look at <a href="https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/prompts/readme-blueprint-generator.prompt.md" class="external-link uri">https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/prompts/readme-blueprint-generator.prompt.md</a>:</p>
+<p>Looking at the file, we can see a number of structural features:</p>
+<ul>
+<li>A metadata header at the top, describing what it aims to do and how
+it will run (in this case, via an agent)</li>
+<li>A sequence of steps to follow, in this case starting with scanning a
+certain set of files to build context, using any
+<code>copilot-instructions.md</code> file, and generating a sections
+each based on specific criteria</li>
+<li>Some end instructions clarifying how to format the README, and some
+high-level guidance on how to write it</li>
+</ul>
+<div id="create-a-reusable-prompt-file-and-generate-a-readme" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div id="create-a-reusable-prompt-file-and-generate-a-readme" class="callout-inner">
+<h3 class="callout-title">Create a Reusable Prompt File and Generate a
+README</h3>
+<div class="callout-content">
+<p>5 mins.</p>
+<ol style="list-style-type: decimal">
+<li>Create a new directory at <code>.github/prompts</code> to hold any
+prompt files we want to include</li>
+<li>Download the prompt file at <a href="https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/prompts/readme-blueprint-generator.prompt.md" class="external-link uri">https://raw.githubusercontent.com/github/awesome-copilot/refs/heads/main/prompts/readme-blueprint-generator.prompt.md</a>
+into this directory</li>
+<li>Select <code>Agent</code> and a model of your choice in the
+chat</li>
+<li>Use the prompt file to generate a README by typing
+<code>/readme-blueprint-generator</code> into the chat. The chat will
+autocomplete the name. Press enter to invoke it</li>
+<li>Select <code>Retry</code> if you want it to try again</li>
+</ol>
+<p>Once generated, review, accept, and amend the README as you see fit.
+You’ll likely see things you want to correct or adapt!</p>
+<p>Add a short description to the shared notes document describing what
+you think about what is generated:</p>
+<ul>
+<li>Generally, to what extent is the README is useful?</li>
+<li>What is incorrect and needs to be fixed?</li>
+<li>What is missing?</li>
+</ul>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -3795,6 +3872,7 @@ skeptical approach becomes even more important.</p>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></section>
 </div>
     </main>
