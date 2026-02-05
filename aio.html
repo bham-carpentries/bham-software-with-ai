@@ -345,7 +345,7 @@
         
 <section id="aio-01-intro-ai-ide-tools"><p>Content from <a href="01-intro-ai-ide-tools.html">Introduction to AI Coding IDE Tools</a></p>
 <hr>
-<p>Last updated on 2026-02-02 |
+<p>Last updated on 2026-02-05 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/01-intro-ai-ide-tools.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -359,6 +359,10 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
+<li>Where does generative AI fit within the broader historical and
+technical landscape of AI systems?</li>
+<li>How do large language models generate text, code, or explanations
+without understanding meaning in a human sense?</li>
 <li>How can an AI coding assistant help development within an IDE?</li>
 <li>What are the mechanisms by which IDE AI assistants provide
 help?</li>
@@ -378,7 +382,12 @@ models?</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>List key benefits of using AI coding assistants</li>
+<li>Describe where ChatGPT and similar large language models fit within
+the broader AI landscape.</li>
+<li>Explain, at a conceptual level, what generative AI and ChatGPT
+are.</li>
+<li>Summarize the primary functions and intended use cases of common AI
+coding assistants.</li>
 <li>Describe some common tasks undertaken by an IDE coding
 assistant</li>
 <li>Describe a responsible approach to using IDE coding assistants in
@@ -386,9 +395,8 @@ development</li>
 <li>Describe how GitHub Copilot integrates with Visual Studio Code</li>
 <li>Describe the different built-in models and their specialisms and
 tradeoffs</li>
-<li>Describe how to make use of other non built-in LLMs from third party
-providers</li>
-<li>Describe how to use locally hosted models</li>
+<li>Describe how to make use of other non built-in LLMs within
+Copilot</li>
 <li>List the limitations of the free pricing tier of GitHub Copilot</li>
 </ul>
 </div>
@@ -396,26 +404,673 @@ providers</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="technical-debt">Technical Debt<a class="anchor" aria-label="anchor" href="#technical-debt"></a>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
-<p>When faced with a problem that you need to solve by writing code - it
-may be tempted to skip the design phase and dive straight into
-coding.</p>
-<p>What happens if you do not follow the good software design and
-development best practices? It can lead to accumulated ‘technical debt’,
-which (according to <a href="https://en.wikipedia.org/wiki/Technical_debt" class="external-link">Wikipedia</a>), is
+<p>Software is critical to research - the Software Sustainability
+Institute’s UK Research Software Survey found that more than 92% of
+academics use research software, and 56% write their own code. A study
+also conducted by the Institute also found an exponential increase in
+the prevalence of software-related terms in publications between
+2000-2017.</p>
+<figure><img src="fig/software-terms-publications.png" alt="Percentage of research publications with software-related terms 2000-2017" class="figure mx-auto d-block"><div class="figcaption">Percentage of research publications with
+software-related terms 2000-2017</div>
+</figure><p>As a specific institutional example, when researchers were asked “how
+important is research software to your work?” in a software study
+conducted at the University of Southampton, 73% of respondents indicated
+that it was “Vital”.</p>
+<p>For many researchers, writing code for data analysis or software
+development can be boring, frustrating, or intimidating. Most
+researchers would rather be thinking about and researching their subject
+matter rather than spending lots of time learning a programming language
+and writing code. Therefore, with easy access to AI tools, it can be
+very tempting to ask AI to write your research code for you.</p>
+<figure><img src="fig/i_would_rather_not_behold.png" alt='Cartoon of an instructor gesturing enthusiastically to a screen full of R documentation saying "BEHOLD! An amazing function!" A skeptical looking student looks on, saying "I would rather not behold...' class="figure mx-auto d-block"><div class="figcaption">Artwork by <span class="citation">@allison_horst</span>, CC-BY</div>
+</figure><p>This course aims to:</p>
+<ul>
+<li>Recap/provide a light introduction for how to use Microsoft Visual
+Studio Code</li>
+<li>Provide a working AI-supported environment within the Visual Studio
+Code Integrated Development Environment</li>
+<li>Demonstrate the fundamentals of how to use Copilot within Visual
+Studio Code to expedite research software development</li>
+<li>Introduce practical ways to mitigate the risks of using AI coding
+assistants within day-to-day software development</li>
+</ul></section><section><h2 class="section-heading" id="current-landscape-of-ai">Current Landscape of AI<a class="anchor" aria-label="anchor" href="#current-landscape-of-ai"></a>
+</h2>
+<hr class="half-width">
+<p>In recent years, one particular type of AI system, generative AI, has
+dominated public and professional interaction with artificial
+intelligence. While highly visible, generative AI represents only one
+approach within a much broader AI landscape.</p>
+<p>At a high level, today’s AI systems can be grouped into three broad
+categories:</p>
+<div class="section level3">
+<h3 id="rule-based-and-decision-systems">1. Rule-Based and Decision Systems<a class="anchor" aria-label="anchor" href="#rule-based-and-decision-systems"></a>
+</h3>
+<p>These systems operate using explicitly defined rules, logic, or
+constraints. Their behaviour is deterministic and transparent, which
+makes them reliable in stable, well-defined environments. Rule-based
+systems are still widely used in areas such as compliance, governance,
+and safety-critical decision-making. However, they are limited in their
+ability to handle ambiguity, novelty, or rapidly changing
+conditions.</p>
+<p>A laboratory safety interlock is an example of a rule-based system.
+It monitors the state of critical variables, such as door positions,
+pressure levels, temperature, radiation shielding, or airflow, and
+allows an action only if all safety conditions are met. For example, a
+high-power laser system may be physically prevented from firing unless
+the enclosure door is closed, warning lights are active, and emergency
+stops are disengaged. If any condition is violated, the system
+immediately shuts down or blocks operation.</p>
+<p>These systems are deterministic and transparent, in other words the
+same inputs always lead to the same outcome and the rules governing
+behaviour are explicitly defined. Unlike learning-based AI systems,
+laboratory safety interlocks do not adapt or infer, they exist to
+enforce safety rules reliably, even in the presence of human error.</p>
+</div>
+<div class="section level3">
+<h3 id="predictive-and-analytical-systems">2. Predictive and Analytical Systems<a class="anchor" aria-label="anchor" href="#predictive-and-analytical-systems"></a>
+</h3>
+<p>These systems learn patterns from data to make predictions,
+classifications, or risk estimates. Rather than following fixed rules,
+they use statistical models to answer questions such as ‘What category
+does this belong to?’ or ‘How likely is this outcome?’ Predictive AI
+systems are common in research and operational settings, including data
+analysis, diagnostics, and forecasting. Their outputs support decisions
+but do not create new content.</p>
+<p>One example of a predictive AI system is a machine-learning model
+trained to automatically label features in microscope images, such as
+identifying specific cell types or structures.</p>
+<p>The model learns from large sets of images that have been annotated
+by experts, using statistical patterns like shape, texture, and
+intensity to distinguish between categories. Once trained, it can
+rapidly classify new images, allowing researchers to analyse large
+datasets more efficiently and consistently than manual methods.</p>
+<p>The system provides probabilities, rather than definitive answers, as
+outputs and does not generate new content or biological insight. The
+results must be validated and interpreted by researchers, as the model’s
+performance depends heavily on the quality of the training data and
+imaging conditions.</p>
+<figure><img src="fig/micrograph.jpg" alt="Light micrograph of an undecalcified epiphyseal plate that is displaying the hypertrophic zone with its typical chondrocytes, matrix and three zones: maturation (top), degenerative (middle) and provisional calcification (bottom)." class="figure mx-auto d-block"><div class="figcaption">A close-up microscope image of a growth plate,
+Robert M. Hunt, Public domain, via Wikimedia Commons</div>
+</figure>
+</div>
+<div class="section level3">
+<h3 id="generative-systems">3. Generative Systems<a class="anchor" aria-label="anchor" href="#generative-systems"></a>
+</h3>
+<p>Generative AI systems are designed to produce new outputs that
+resemble the data on which they were trained. This includes generating
+text, code, images, or other media. The current AI systems that we are
+familiar with, such as ChatGPT, fall into this category. These systems
+are optimised for producing fluent and contextually appropriate
+responses, not for verifying truth or making authoritative
+decisions.</p>
+<p>Some examples of generative AI uses:</p>
+<ul>
+<li>The language learning app Duolingo uses generative AI to explain
+mistakes and practice conversations. The features are part of a new
+subscription tier called “Duolingo Max”.</li>
+<li>The education website Khan Academy is using generative AI for their
+tutoring chatbot called “Khanmigo”</li>
+<li>An app called Be My Eyes helps people with visual impairments to
+identify objects and navigate their surroundings, by using the image
+recognition capabilities of GPT-4.</li>
+</ul>
+<figure><img src="fig/smartphone_with_chatGPT.jpg" alt="Smartphone with ChatGPT on the US dollar banknotes background" class="figure mx-auto d-block"><div class="figcaption">Jernej Furman from Slovenia, CC BY 2.0, via
+Wikimedia Commons</div>
+</figure><p>Most AI systems in use today are narrow, task-specific tools. Some
+are designed to enforce rules, others to analyse data and make
+predictions, and an increasingly visible group, generative systems, are
+designed to produce new content. Generative AI systems are powerful and
+influential, but they are not representative of AI as a whole.
+Hopefully, understanding these broad categories helps us to set
+appropriate expectations for AI and prepares us to examine generative AI
+in more detail.</p>
+<table class="table">
+<colgroup>
+<col width="25%">
+<col width="33%">
+<col width="20%">
+<col width="21%">
+</colgroup>
+<thead><tr class="header">
+<th><strong>AI System Type</strong></th>
+<th><strong>What the system does</strong></th>
+<th><strong>Strengths</strong></th>
+<th><strong>Limitations</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>Rule-Based &amp; Decision Systems</strong></td>
+<td>Follows clearly defined rules to allow, block, or trigger
+actions</td>
+<td>Predictable and transparent; behaves the same way every time; well
+suited to safety-critical or regulated settings</td>
+<td>Cannot adapt to new situations or handle uncertainty</td>
+</tr>
+<tr class="even">
+<td><strong>Predictive &amp; Analytical Systems</strong></td>
+<td>Uses data to estimate categories, trends, or likelihoods</td>
+<td>Can analyse large datasets efficiently; supports consistent analysis
+and forecasting</td>
+<td>Results depend on data quality; outputs are probabilities, not final
+answers</td>
+</tr>
+<tr class="odd">
+<td><strong>Generative Systems</strong></td>
+<td>Creates new text, code, images, or other content</td>
+<td>Flexible and easy to interact with; useful for drafting, coding, and
+exploring ideas</td>
+<td>Outputs can sound confident but be incomplete or wrong</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Human Oversight Across AI Types</strong></p>
+<p>Human responsibility increases from rule-based to predictive to
+generative systems because more judgment, interpretation, and
+accountability must be carried by people rather than the system
+itself.</p>
+<ul>
+<li>Rule-based systems behave exactly as specified and therefore the
+responsibility is mostly in system design, not in day-to-day
+interpretation.</li>
+<li>Predictive systems give estimates, not decisions and the
+responsibility lies with humans for interpretation and validation.</li>
+<li>Generative systems require the highest human responsibility at the
+point of use. For example, when a researcher uses generative AI to draft
+text, summarise literature, or generate code, the responsibility for
+correctness remains entirely with the human.</li>
+</ul>
+</div>
+</section><section><h2 class="section-heading" id="demystifying-generative-ai">Demystifying Generative AI<a class="anchor" aria-label="anchor" href="#demystifying-generative-ai"></a>
+</h2>
+<hr class="half-width">
+<div class="section level3">
+<h3 id="what-is-gpt">What Is GPT?<a class="anchor" aria-label="anchor" href="#what-is-gpt"></a>
+</h3>
+<p>The model of generative AI that has been widespread in recent years
+is GPT. An AI model that can produce text that reads as coherent and
+context-aware, such as explanations, summaries, or responses to
+questions.</p>
+<p>ChatGPT is an application built on top of GPT models. It provides a
+user-friendly, conversational interface to interact with the GPT model.
+ChatGPT is one of many tools that use GPT.</p>
+<p>GPT is also integrated into software products such as Microsoft’s
+Copilot, search engines, and coding environments.</p>
+<p>GPT stands for Generative Pre-trained Transformer:</p>
+<ul>
+<li>
+<strong>Generative</strong>: GPT is designed to generate new
+content. Rather than retrieving fixed answers from a database, it
+produces original outputs, such as text or code.</li>
+<li>
+<strong>Pre-trained</strong>: it is trained on vast amounts of data
+before deployment.</li>
+<li>
+<strong>Transformer</strong>: this refers to the internal design of
+the neural network that helps the system keep track of context across
+longer pieces of text.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="understanding-large-language-models">Understanding Large Language Models<a class="anchor" aria-label="anchor" href="#understanding-large-language-models"></a>
+</h3>
+<p>Systems like GPT belong to a group called Large Language Models
+(LLMs). An LLM is a program that learns how language works by analysing
+very large collections of text. It does not store facts in a database or
+follow pre-programmed rules. Instead, it learns patterns in how words,
+sentences, and ideas tend to appear together.</p>
+<p>LLMs are built using neural networks. In this context, a neural
+network provides the underlying learning machinery that allows the
+system to absorb information from large amounts of text and improve its
+predictions over time.</p>
+<div id="what-is-a-neural-network" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="what-is-a-neural-network" class="callout-inner">
+<h3 class="callout-title">What is a neural network?</h3>
+<div class="callout-content">
+<p>A neural network is a type of computational model inspired by how the
+human brain processes information. The name comes from its loose
+resemblance to brain cells (called neurons), but it is not a biological
+model of the brain.</p>
+<p>Instead, a neural network is built from many simple processing units,
+called neurons, that pass information to one another in stages. Each
+neuron receives inputs, applies a simple rule to transform them, and
+then passes the result forward. By stacking many of these stages on top
+of each other, the system can learn complex patterns in data.</p>
+<p>Learning in a neural network happens gradually as the network adjusts
+how strongly the neurons influence each other so that its outputs become
+more accurate over time.</p>
+<figure><img src="fig/artificial_neural_network.svg" alt="Artificial neural network with layer coloring" class="figure mx-auto d-block"><div class="figcaption">A simplified diagram of an artificial neural
+network. Glosser.ca, CC BY-SA 3.0, via Wikimedia Commons</div>
+</figure><figure><img src="fig/neuron.png" alt="Neuron and myelinated axon, with signal flow from inputs at dendrites to outputs at axon terminals." class="figure mx-auto d-block"><div class="figcaption">A diagram of a neuron. Egm4313.s12 at English
+Wikipedia, CC BY-SA 3.0, via Wikimedia Commons</div>
+</figure>
+</div>
+</div>
+</div>
+<div id="what-is-a-transformer" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="what-is-a-transformer" class="callout-inner">
+<h3 class="callout-title">What is a transformer?</h3>
+<div class="callout-content">
+<p>A transformer is a type of neural network architecture designed
+specifically to work with sequences, such as sentences, paragraphs, or
+lines of code. Its key strength is the ability to consider context, that
+is, how different parts of a sequence relate to one another, when
+processing or generating information.</p>
+<p>Traditional language-processing systems handled text one word at a
+time, in order. This made it difficult for them to keep track of
+long-range relationships, such as how a word at the start of a sentence
+relates to one at the end. Transformers address this limitation by
+processing all parts of a text sequence simultaneously, allowing the
+model to identify patterns and relationships across an entire passage at
+once.</p>
+<p>The central mechanism that enables this is called attention.
+Attention allows the model to assign different levels of importance to
+different words in a sentence depending on the context. For example,
+when interpreting the meaning of a pronoun such as “it,” the transformer
+can look back across the sentence or paragraph to determine which
+earlier word is most relevant. This makes the model far more effective
+at handling complex language structures. For example, consider the
+sentence “The cat ate the mouse because it was hungry.” Attention helps
+the model see that “it” refers to “the cat”, not “the mouse,” by
+focusing on the most relevant word in the sentence.</p>
+<p>In practical terms, the transformer architecture is what enables
+systems like GPT to produce fluent, context-aware text, maintain
+coherence over long responses, and adapt their output to different tasks
+using the same underlying model. However, despite their apparent
+sophistication, transformers do not reason or understand language; they
+identify and reproduce patterns based on statistical relationships
+learned during training.</p>
+</div>
+</div>
+</div>
+<p>GPT generates content <strong>token by token</strong>, rather than
+producing an entire sentence all at once. A token can be a word, part of
+a word, or a punctuation mark.</p>
+<p>This sequential token generation allows GPT to produce coherent and
+contextually relevant text because each new token is generated in the
+context of all previous tokens. It’s like writing a sentence one word at
+a time, making sure each word fits with everything written before
+it.</p>
+<p>When you enter a prompt into GPT:</p>
+<ol style="list-style-type: decimal">
+<li>The model looks at the input text (the prompt) and splits it into
+tokens.</li>
+<li>It predicts the probability of each possible next token based on all
+previous tokens.</li>
+<li>A token is chosen based on the model’s predicted probabilities.
+Either the most likely token is selected, or one is sampled from the
+distribution of probable tokens to allow more varied or creative
+outputs.</li>
+<li>The token is added to the growing output sequence.</li>
+<li>Steps 2–4 repeat until the model produces a complete response.</li>
+<li>The tokens are decoded back into human-readable text.</li>
+</ol>
+<p>As you can now understand, GPT doesn’t simply retrieve pre-written
+sentences, but instead builds content step by step and this is why it
+can generate such flexible and novel outputs.</p>
+<div id="what-is-a-token" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="what-is-a-token" class="callout-inner">
+<h3 class="callout-title">What is a token?</h3>
+<div class="callout-content">
+<p>A <strong>token</strong> is the basic unit of text that a GPT model
+processes and generates. Tokens are not always whole words. They may be
+a full word (e.g. <code>data</code>), part of a word
+(e.g. <code>clean</code> + <code>ed</code>), numbers, symbols, or
+punctuation (e.g. <code>.</code>, <code>,</code>, <code>(</code>).</p>
+<p>Consider the sentence:</p>
+<p><em>“The dataset was cleaned.”</em></p>
+<p>Internally, the model might split this into tokens such
+as:<code>The</code>| <code>data</code> | <code>set</code> |
+<code>was</code> | <code>clean</code> | <code>ed</code> |
+<code>.</code></p>
+<p>Large language models do not decide how to split words dynamically.
+Instead, tokenisation is fixed in advance by a tokeniser created before
+training. Most GPT-style models use subword tokenisation methods such as
+Byte Pair Encoding (BPE) or similar approaches, which merge frequently
+occurring character sequences until a fixed vocabulary size is
+reached.</p>
+<p>Common words are typically single tokens (e.g. <code>data</code>),
+while less common or more complex words are split into subword tokens
+(e.g. <code>token</code> + <code>isation</code>). This allows the model
+to handle new or rare words by recombining familiar pieces rather than
+requiring a unique token for every word.</p>
+<p>Tokens do not necessarily align with meaning or syllables because
+tokenisation is <strong>statistical</strong> rather than
+<strong>linguistic</strong>. This explains why prompts that seem similar
+to us humans can produce very different outputs.</p>
+<p>Understanding tokenisation allows us to appreciate a key limitation
+of GPT: the model optimises for what is <strong>likely</strong> to
+follow, not for what is <strong>correct</strong>, so early token-level
+errors can influence the rest of the response.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="how-a-gpt-model-is-trained">How a GPT Model is Trained<a class="anchor" aria-label="anchor" href="#how-a-gpt-model-is-trained"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>
+<strong>Data collection</strong> - A large amount of text is
+gathered to train the AI model on.</li>
+<li>
+<strong>Model architecture design</strong> - The neural network
+architecture is designed to best suit the purpose of the AI</li>
+<li>
+<strong>Pre-training</strong> - The AI model is trained on the
+collected text.</li>
+<li>
+<strong>Fine-tuning</strong> - Further training the model on
+specific datasets and tasks related to its purpose e.g. if it is going
+to be a code assistant it will be trained on tasks related to code
+generation.</li>
+<li>
+<strong>Alignment</strong> – Guide the model so that its outputs are
+helpful, safe, and in line with human intentions. This often involves
+human feedback to encourage responses that are accurate, reliable, and
+appropriate.</li>
+<li>
+<strong>Evaluation and iteration</strong> - Testing the AI in a
+variety of use cases, getting feedback and iterating the model
+architecture to improve performance.</li>
+</ol>
+<figure><img src="fig/model_training_process_cropped.png" alt="Diagram of the 6 steps for training a GPT model" class="figure mx-auto d-block"></figure>
+</div>
+</section><section><h2 class="section-heading" id="overview-of-ai-tools-that-can-support-research-coding">Overview of AI tools that can support research coding<a class="anchor" aria-label="anchor" href="#overview-of-ai-tools-that-can-support-research-coding"></a>
+</h2>
+<hr class="half-width">
+<div class="section level3">
+<h3 id="ai-assisted-coding-tools">AI-Assisted Coding Tools<a class="anchor" aria-label="anchor" href="#ai-assisted-coding-tools"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><p><strong>ChatGPT</strong> – A conversational large language model
+by OpenAI that can generate code, explain programming concepts, assist
+with debugging, and support data analysis workflows.</p></li>
+<li><p><strong>GitHub Copilot</strong> – AI-powered coding assistant
+integrated into code editors, suggesting code completions, functions,
+and boilerplate across multiple programming languages.</p></li>
+<li><p><strong>Google Gemini</strong> – Google’s AI platform for
+research and coding assistance, capable of generating code, providing
+explanations, and supporting data analysis and workflow tasks.</p></li>
+<li><p><strong>Claude</strong> – A conversational AI by Anthropic
+designed to assist with coding, writing, and research tasks, providing
+explanations, summaries, and code generation support.</p></li>
+<li><p><strong>Microsoft Copilot</strong> – Integrated into Microsoft
+tools like Word, Excel, and Visual Studio, this AI assistant helps with
+code generation, data analysis, and workflow automation.</p></li>
+</ol>
+<p>Within the course, we’ll be Copilot with a selection of its
+integrated AI models (ChatGPT and Claude) as the vehicles to illustrate
+the concepts and demonstrate how to use these tools.</p>
+</div>
+<div class="section level3">
+<h3 id="levels-of-ai-assisted-coding">Levels of AI-Assisted Coding<a class="anchor" aria-label="anchor" href="#levels-of-ai-assisted-coding"></a>
+</h3>
+<p>The <a href="https://oerc.ox.ac.uk/ai-centre/ai-guides/getting-started-with-ai-for-coding" class="external-link">Oxford
+AI Competency Centre</a> suggest thinking about AI-Assisted Coding as
+existing in four levels of differing complexity and capability:</p>
+<p><strong>Level 1: Code Snippets (Copy and Paste)</strong> A Large
+Language Model inside a chatbot generates code that you copy and paste
+into files or environments you manage yourself. Examples: ChatGPT,
+Claude, Gemini, GitHub Copilot Chat</p>
+<p><strong>Level 2: Canvas and Artifacts (Integrated Execution)</strong>
+LLM writes code inside a chatbot and immediately runs it within the chat
+interface, creating interactive applications you can use and modify in
+real-time. Examples: Google Gemini, Claude Artifacts, ChatGPT Canvas</p>
+<p><strong>Level 3: Agentic App Builders (Full Application
+Development)</strong> LLM-powered services that plan and execute the
+entire development process, from concept to deployed application,
+handling multiple files, frameworks, and deployment automatically.
+Examples: Lovable, Bolt, v0 by Vercel, Google AI Studio</p>
+<p><strong>Level 4: Agentic IDEs (Professional Development)</strong>
+AI-powered development environments that assist with complex, multi-file
+projects, handling entire codebases, version control, and sophisticated
+development workflows. Examples: Cursor, GitHub Copilot, Claude Code,
+Google Colab</p>
+<p>This intermediate course addresses working within Level 4, using
+Microsoft Visual Studio Code (VSCode) and Copilot.</p>
+<div id="which-tools-are-most-commonly-used-by-researchers" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="which-tools-are-most-commonly-used-by-researchers" class="callout-inner">
+<h3 class="callout-title">Which tools are most commonly used by
+researchers?</h3>
+<div class="callout-content">
+<p>In a study of 868 scientists who code as part of their research,
+ChatGPT was by far the most common tool used to assist with research
+coding, used by 64% of participants, followed by GitHub Copilot, used by
+12% of participants.</p>
+<p><em>(O’Brien, G., Parker, A., Eisty, N., &amp; Carver, J. (2025).
+More code, less validation: Risk factors for over-reliance on AI coding
+tools among scientists. arXiv preprint arXiv:2512.19644.)</em></p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="using-ai-coding-assistants-in-integrated-development-environments-ides">Using AI Coding Assistants in Integrated Development Environments
+(IDEs)<a class="anchor" aria-label="anchor" href="#using-ai-coding-assistants-in-integrated-development-environments-ides"></a>
+</h2>
+<hr class="half-width">
+<p>Generative AI has the potential to transform how researchers work
+with code, and with the integration of such capability within common
+IDEs, such as Visual Studio Code, provide the coding researcher with
+powerful tools to modify, expand and otherwise work with code. But this
+potential needs to be tempered with critical thinking and a healthy
+degree of skepticism.</p>
+<figure><img src="fig/chris-ried-ieic5Tq8YMk-unsplash.jpg" alt="Photo of Python code within an IDE" class="figure mx-auto d-block"><div class="figcaption">Photo courtesy of Chris Reid on Unsplash</div>
+</figure><div class="section level3">
+<h3 id="common-tasks-and-features">Common Tasks and Features<a class="anchor" aria-label="anchor" href="#common-tasks-and-features"></a>
+</h3>
+<p>AI coding assistants in IDEs (such as GitHub Copilot) provide a
+bewildering array of support for various tasks, including:</p>
+<ul>
+<li>
+<strong>Code explanation</strong> – explains how existing code
+works, helping researchers understand unfamiliar code or learn new
+programming patterns</li>
+<li>
+<strong>Code completion and generation</strong> – suggests and
+generates code snippets based on context, reducing time spent on
+boilerplate and repetitive code</li>
+<li>
+<strong>Function and method suggestions</strong> – proposes complete
+function implementations based on function signatures and
+docstrings</li>
+<li>
+<strong>Debugging assistance</strong> – identifies potential bugs
+and suggests fixes for problematic code</li>
+<li>
+<strong>Documentation generation</strong> – automatically generates
+comments, docstrings, and README content</li>
+<li>
+<strong>Refactoring support</strong> – suggestions for improving
+code structure and readability</li>
+<li>
+<strong>Test generation</strong> – creates unit tests for existing
+code to improve code reliability</li>
+<li>
+<strong>Language/framework translation</strong> – converts code
+between programming languages and frameworks</li>
+<li>
+<strong>Designing and planning new code</strong> – helps structure
+projects and write new functionality by generating code based on
+high-level descriptions, function signatures, and requirements; can
+create initial implementations that developers then refine</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="benefits-and-risks">Benefits and Risks<a class="anchor" aria-label="anchor" href="#benefits-and-risks"></a>
+</h3>
+<p>AI coding assistants offer several key benefits to research software
+development. They can accelerate development by reducing time spent on
+routine coding tasks, allowing researchers to focus on domain-specific
+problems. Plus, for those new to a programming language, these tools
+help lower the learning curve and enable faster productivity. The
+suggestions and examples provided by AI assistants <em>may</em> also
+encourage better coding practices and improve overall code quality.
+Additionally, they make it easier to maintain clear and comprehensive
+documentation, supporting long-term code maintainability.</p>
+<p>However, they also introduce a number of significant risks:</p>
+<ul>
+<li>
+<strong>Correctness and Validation</strong> - generative systems
+optimize for likelihood, not correctness. AI-generated code can sound
+confident but be incomplete, incorrect, or insecure. Researchers remain
+fully responsible for validating outputs.</li>
+<li>
+<strong>Limited explanation</strong> - unlike a standalone AI like
+ChatGPT, IDE-integrated AI often provides suggestions without detailed
+reasoning. This can reduce researchers’ understanding of AI-generated
+code</li>
+<li>
+<strong>Potential over-reliance</strong> - it can be very tempting
+to accept AI code suggestions that appear to work, without fully
+understanding them, and this can lead to errors or misunderstandings
+about what your code does.</li>
+<li>
+<strong>Privacy and security risks</strong> - the AI may send code
+snippets to cloud services for processing. Sensitive data or unpublished
+research could be exposed if this is not carefully managed.</li>
+<li>
+<strong>Context and Edge Cases</strong> – AI assistants may miss
+domain-specific requirements, edge cases, or research-specific
+constraints that are critical for correctness.</li>
+<li>
+<strong>Code Quality</strong> - generated code may work but be
+inefficient, poorly structured, or violate best practices, degrading
+long-term maintainability.</li>
+</ul>
+<p>There are also a number of tangential non-coding risks we should
+consider. One of these is vendor lock-in: as the perceived value of a
+particular vendor’s AI tool increases, so does the risk of dependence on
+that particular vendor’s tool. This can make switching tools difficult
+and leaving users at greater risk of service price increases and at the
+mercy of that vendor’s product roadmap, which may not align with the
+goals of the user. Secondly, depending on the training data used
+(e.g. codebases, best practice articles, etc.), biases may be introduced
+that favour particular technical tools and approaches which are not
+optimal or even sensible choices for a project. Plus, even <a href="https://support.microsoft.com/en-gb/topic/transparency-note-for-microsoft-copilot-c1541cad-8bb4-410a-954c-07225892dbc2" class="external-link">Microsoft
+acknowledges</a> that <em>“The language, image, and audio models that
+underly the Copilot experience may include training data that can
+reflect societal biases, which in turn can potentially cause Copilot to
+behave in ways that are perceived as unfair, unreliable, or
+offensive.”</em> These may include the reinforcing of negative
+stereotypes, over or under-representation of specific groups of people,
+even inappropriate or offensive content, and variable performance across
+different spoken languages.</p>
+<p>Research software produces results that inform publications, policy,
+and further research. Unlike commercial software where bugs typically
+cause inconvenience, errors in research code can invalidate findings,
+waste resources, introduce unwanted biases, and compromise scientific
+integrity. AI tools optimize for likelihood, not correctness, so again,
+as responsible researchers, we must scrutinise AI generative
+responses.</p>
+</div>
+<div class="section level3">
+<h3 id="a-key-risk-technical-debt">A Key Risk: Technical Debt<a class="anchor" aria-label="anchor" href="#a-key-risk-technical-debt"></a>
+</h3>
+<p>When faced with a problem that you need to solve by writing code, it
+may be tempting to skip the design phase and dive straight into coding,
+particularly when we have AI-assistants able to generate code so
+comprehensively and rapidly, with such an array of features.</p>
+<p>Let’s examine this capability in the light of the risk it presents to
+the rigour and verifiability of our code.</p>
+<p>With software development in general, what happens if we do not
+follow the good software design and development best practices? It can
+lead to accumulated ‘technical debt’, which (according to <a href="https://en.wikipedia.org/wiki/Technical_debt" class="external-link">Wikipedia</a>), is
 the “cost of additional rework caused by choosing an easy (limited)
 solution now instead of using a better approach that would take longer”.
 The pressure to achieve project goals can sometimes lead to quick and
-easy solutions, which make the software become more messy, more complex,
-and more difficult to understand and maintain.</p>
+easy solutions, (in our case, particularly such as using AI assisted
+tools), which make the software become more messy, more complex, and
+more difficult to understand and maintain.</p>
 <p>The extra effort required to make changes in the future is the
-interest paid on the (technical) debt. It is natural for software to
+interest paid on this (technical) debt. It is natural for software to
 accrue some technical debt, but it is important to pay off that debt
 during a maintenance phase - simplifying, clarifying the code, making it
 easier to understand - to keep these interest payments on making changes
 manageable.</p>
+<p>When using AI-generated solutions, the risk is that without
+sufficient understanding of what is generated, the extent of technical
+debt may accumulate very quickly, to the point where the understanding
+and maintenance of the codebase by a researcher (or a team) becomes
+intractable and unmanageable. So we need to integrate the use of AI
+tooling responsibly within our day-to-day development practices.</p>
+</div>
+<div class="section level3">
+<h3 id="the-immature-and-rapidly-evolving-landscape">The Immature and Rapidly Evolving Landscape<a class="anchor" aria-label="anchor" href="#the-immature-and-rapidly-evolving-landscape"></a>
+</h3>
+<p>While AI coding assistants in IDEs present features that may appear
+advanced and polished, the field itself remains relatively immature and
+is evolving at a rapid pace. The landscape is characterized by:</p>
+<ul>
+<li>
+<strong>Rapid feature development</strong> - new capabilities are
+continuously being added and refined by vendors competing in this
+space</li>
+<li>
+<strong>Unstable implementations</strong> - how features are
+implemented, displayed, and accessed changes frequently, sometimes
+between minor version updates</li>
+<li>
+<strong>Shifting vendor priorities</strong> - large technology
+companies regularly adjust their AI strategies. For example, Microsoft
+has recently scaled back some of its ambitious AI goals for Visual
+Studio Code, which may affect the availability and priority of
+AI-assisted features in the editor</li>
+<li>
+<strong>Incomplete standardization</strong> - there is no
+industry-wide standard for how AI assistants should integrate with IDEs,
+leading to inconsistent user experiences across different tools</li>
+</ul>
+<p>This rapid evolution means that the tools and best practices applied
+to them can quickly become outdated. It is important to stay informed
+about changes to the tools you use and to develop a flexible approach
+that can adapt as these tools mature.</p>
+</div>
+</section><section><h2 class="section-heading" id="introduction-to-github-copilot">Introduction to GitHub Copilot<a class="anchor" aria-label="anchor" href="#introduction-to-github-copilot"></a>
+</h2>
+<hr class="half-width">
+<div class="section level3">
+<h3 id="different-models">Different Models<a class="anchor" aria-label="anchor" href="#different-models"></a>
+</h3>
+</div>
+</section><section><h2 class="section-heading" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<hr class="half-width">
+<ul>
+<li><a href="https://zenodo.org/records/1183562" class="external-link">S.J. Hettrick et al, UK
+Research Software Survey 2014</a></li>
+<li><a href="http://www.software.ac.uk/blog/2014-12-04-its-impossible-conduct-research-without-software-say-7-out-10-uk-researchers" class="external-link">S.J.
+Hettrick, It’s Impossible to Conduct Research Without Software, Say 7
+out of 10 UK Researchers</a></li>
+<li><a href="https://github.com/softwaresaved/software_in_grants_GTR" class="external-link">S.J
+Hettrick et al, An investigation of the funding invested into
+software-reliant research”</a></li>
+<li><a href="https://www.lse.ac.uk/DSI/AI/AI-Research/Introduction-to-Generative-AI-for-researchers?entryId=2319c173-7bdc-45d3-9a69-d12fd54340d7&amp;nodeId=e2e64854-5d30-44fa-a289-a5ef76104f3e" class="external-link">Introduction
+to Generative AI for Researchers</a></li>
+<li><a href="https://arxiv.org/abs/2512.19644" class="external-link">O’Brien, G., Parker, A.,
+Eisty, N., &amp; Carver, J. (2025). More code, less validation: Risk
+factors for over-reliance on AI coding tools among scientists.</a></li>
+<li><a href="https://oerc.ox.ac.uk/ai-centre/ai-guides/getting-started-with-ai-for-coding" class="external-link">Getting
+started with AI for Coding by Oxford AI Competency Centre</a></li>
+</ul>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -424,7 +1079,28 @@ manageable.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>FIXME</li>
+<li>Artificial intelligence is not as a single capability or system, but
+as a broad collection of techniques and approaches for solving different
+kinds of problems.</li>
+<li>AI can be grouped into 3 broad categories: Rule-Based and Decision
+Systems, Predictive and Analytical Systems, and Generate Systems</li>
+<li>GPT (Generative Pre-trained Transformer) is a type of large language
+model built on transformer neural networks, which use attention to
+process entire sequences and capture context, enabling coherent,
+context-aware text or code generation.</li>
+<li>GPT generates content one token at a time, predicting each new token
+based on all previous tokens to produce fluent, contextually relevant,
+and novel outputs.</li>
+<li>GPT models are trained in stages: collecting large text datasets,
+designing the neural network, pre-training on broad data, fine-tuning on
+task-specific datasets, and iteratively evaluating and improving
+performance.</li>
+<li>ChatGPT is a user-friendly application built on GPT models, while
+GPT itself is also integrated into other tools like Microsoft Copilot,
+search engines, and coding environments.</li>
+<li>Technical debt accumulates when skipping design phases for quick
+AI-generated solutions, requiring future maintenance effort to simplify
+and clarify code.</li>
 </ul>
 </div>
 </div>
@@ -1401,7 +2077,7 @@ and so on.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>Describe the main packages used? e.g.</li>
@@ -1642,7 +2318,7 @@ come to this in the next episode.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 </li></ol>
@@ -1814,7 +2490,7 @@ your work?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Possible benefits:</p>
 <ul>
@@ -1867,7 +2543,7 @@ adapt our day-to-day development to accomodate these changes?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul>
 <li>Ensure suggested changes are throughly reviewed understood prior to
@@ -2235,6 +2911,9 @@ box</li>
 description accordingly. In this case, it doesn’t mention about the DPI
 setting which might be a particular nuance we wish to add, so again, we
 need to review what Copilot suggests.</p>
+<p>Also worth noting is that if we wanted to reference a repository
+issue number in our commit message, we should remember to add that as
+well.</p>
 <p>Once we’re happy with it, we can then select <code>Commit</code> to
 commit our changes to our local repository.</p>
 <div id="a-small-refactor" class="callout challenge">
@@ -2321,10 +3000,10 @@ we write.</p>
 <p>AI tools like Copilot make this more important, not less. Whilst it
 accelerates code generation, it doesn’t understand intent or
 consequences, so a strong process ensures we use AI in an environment
-that amplifies good engineering habits instead of bypassing them.</p>
-<p>The key principle is that process assigns responsibility to people,
-not tools. Copilot speeds up execution, but process ensures
-accountability, quality, and sustainability.</p>
+that amplifies good engineering habits instead of bypassing them. The
+key principle is that process assigns responsibility to people, not
+tools. Copilot speeds up execution, but process ensures accountability,
+quality, and sustainability.</p>
 </div>
 </div>
 </div>
