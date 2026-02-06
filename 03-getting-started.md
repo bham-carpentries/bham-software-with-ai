@@ -137,12 +137,7 @@ This effect is often visibly compounded over time, as the probabilistic outcome 
 
 ## Writing Good Chat Prompts
 
-AI tools work best with context, so it's good to be specific where you can.
-
-To add context to a chat prompt you can type `#` followed by the context item you want to add,
-such as a file, folder, tools, code elements (such as variables, functions or classes), tools, amongst others.
-For example, we could type `#inflammation-plot.py` to ensure only responses relevant to that specific file will be generated.
-Alternatively, we could use `#codebase` if we aren't sure which files are relevant to our question.
+AI tools work best with context, so it's good to be as specific and concise as possible.
 
 It's also a good idea to be provide simple questions,
 so if you end up with a question that is decomposable into separate steps,
@@ -150,13 +145,24 @@ ask each step separately and you'll typically get a better outcome.
 This implies that it's good to use a logical, iterative process of using AI to assist,
 using responses to simple questions to inform the next question, and so on.
 
+There's a very useful cheat sheet developed by Northwestern University (US) Research Computing and Data Services,
+which can be found in their [GitHub promptEngineering repository](https://github.com/nuitrcs/promptEngineering).
+
 :::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::: callout
 
 ## Managing Context
 
-One thing to remember is how the context of each chat informs the flow of questions.
+To improve the specificity of a prompt, it's helpful to add as much context as you can.
+
+To add context to a chat prompt you can type `#` followed by the context item you want to add,
+such as a file, folder, tools, code elements (such as variables, functions or classes), tools, amongst others.
+For example, we could type `#inflammation-plot.py` to ensure only responses relevant to that specific file will be generated.
+We could use `#codebase` if we aren't sure which files are relevant to our question, to include all our files.
+Of course, our code may make use of sensitive data files that we don't want Copilot to use, which we'll look at shortly.
+
+Another thing to remember is how the context of each chat informs the flow of questions.
 Copilot chat uses the history of a chat thread to get context about your request.
 To ensure you only provide the context you want,
 use separate threads for each new conversation area you wish to start,
@@ -340,6 +346,38 @@ Approve this file addition by selecting `Keep`.
 
 From this starting point we are free to update this file manually as we continue to develop the code,
 and this context will be used whenever we interact with Copilot.
+
+### Specifying Privacy
+
+In VS Code, GitHub Copilot gives developers some mechanisms to control the level of privacy.
+This should be considered important where our code uses sensitive or otherwise confidential data,
+or potentially valuable IP-related code, such as algorithms.
+
+At a high level, Copilot works by sending small, relevant snippets of your open code (plus surrounding context) to the Copilot service to generate suggestions.
+You don’t explicitly "upload a project", but you do control which files Copilot is allowed to see and draw context from.
+
+The most practical control is scoping Copilot by file, folder, or workspace.
+In VS Code you can disable Copilot entirely, or selectively turn it off for particular file types (for example, configuration files, data files, or notebooks).
+
+For example, we edit our VSCode settings to ignore csv files by:
+
+1. Using `Ctrl + Shift + P` or `Cmd/Windows Key + Shift + P` to open the Command Palette
+1. Entering and selecting `Preferences: Open User Settings (JSON)`
+1. In the `settings.json` file that appears, add the following:
+
+   ```yaml
+      "github.copilot.enable": {
+         "*": true,
+         "csv": false
+      }
+   ```
+
+This will have the effect of potentially including all file types in context by default,
+but not CSV files.
+If you wanted a stricter "default deny" approach instead, you could specify `false` for `*` and enable each filetype explicitly.
+
+There are stricter controls, including some that allow exclusion by directory specifications,
+but these are currently limited to Copilot Business users for their repositories and organisations.
 
 ## Obtaining Guidance on how to Improve our Code
 
