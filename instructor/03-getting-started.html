@@ -405,6 +405,38 @@ action.</li>
 select <code>Open Link</code>.</li>
 </ol><p>Once completed, you’ll now be able to use GitHub Copilot within
 VSCode.</p>
+<div id="decide-on-copilot-privacy-settings" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="decide-on-copilot-privacy-settings" class="callout-inner">
+<h3 class="callout-title">Decide on Copilot Privacy Settings</h3>
+<div class="callout-content">
+<p>Within GitHub itself, since Copilot’s VSCode configuration inherits
+from GitHub’s configuration, as a first step we can and should decide
+and configure a suitable level of privacy for how Copilot will operate;
+particularly if we are making use of sensitive or otherwise confidential
+data within our codebase.</p>
+<p>We can set this within our GitHub user settings, which will apply to
+all we do with Copilot:</p>
+<ol style="list-style-type: decimal"><li><p>Select out GitHub profile icon at github.com, and select
+<code>Settings</code> and then <code>Copilot</code></p></li>
+<li>
+<p>Scroll down to <code>Privacy</code>:</p>
+<figure><img src="../fig/copilot-privacy.png" alt="Privacy settings within GitHub Copilot" class="figure mx-auto d-block"><div class="figcaption">Privacy settings within GitHub Copilot</div>
+</figure></li>
+</ol><p>By default, in the free tier, the first two are enabled.</p>
+<p>In general, it’s a good idea to disable
+<code>Suggestions matching public code</code> since the risk is that it
+may make use of public code sources in a way that isn’t properly
+licensed. In addition, it’s recommended to disable the other two
+(depending on the extent you trust GitHub and their affiliates), since -
+as it clearly states - they allow GitHub and others to use data and code
+snippets for product improvements.</p>
+</div>
+</div>
+</div>
 </section><section><h2 class="section-heading" id="asking-questions-about-your-code">Asking Questions about Your Code<a class="anchor" aria-label="anchor" href="#asking-questions-about-your-code"></a></h2>
 <hr class="half-width"><p>Attempting to understand a new codebase, whether it’s your first week
 on a project or one you have inherited from another source, can be
@@ -743,7 +775,7 @@ we continue to develop the code, and this context will be used whenever
 we interact with Copilot.</p>
 </div>
 <div class="section level3">
-<h3 id="specifying-privacy">Specifying Privacy<a class="anchor" aria-label="anchor" href="#specifying-privacy"></a></h3>
+<h3 id="specifying-privacy-per-file-type">Specifying Privacy per File Type<a class="anchor" aria-label="anchor" href="#specifying-privacy-per-file-type"></a></h3>
 <p>In VS Code, GitHub Copilot gives developers some mechanisms to
 control the level of privacy. This should be considered important where
 our code uses sensitive or otherwise confidential data, or potentially
