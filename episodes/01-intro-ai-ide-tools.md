@@ -349,10 +349,21 @@ For the next exercise, in the shared notes document have a section for participa
 
 3 mins.
 
-Do you have any concerns with using AI coding assistants?
-What are you afraid could happen?
+Two questions:
+
+- How do you hope AI coding assistants will help your software development?
+- Do you have any concerns with using AI coding assistants? e.g. what are you afraid could happen?
 
 :::::::::::::::::::::::::: solution
+
+Some possible benefits:
+
+- Speed up development
+- Help with understanding codebases
+- Assist with learning and implementing new technologies
+- Rapid prototyping
+- Real-time assistance when writing code in an editor
+- Free up time for doing actual research
 
 Some possible concerns:
 
