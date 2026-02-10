@@ -8,7 +8,7 @@ exercises: 30
 
 - How do I use Copilot from within Visual Studio Code?
 - How can I improve the relevance of responses from Copilot for my project?
-- What are the differences between the language models available within VSCode?
+- What are the practical differences between the language models available within VSCode?
 - How much of my Copilot quota have I used?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -674,6 +674,16 @@ This allowance resets on a monthly basis, in this case February 23 2026.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- FIXME
+- Copilot's capabilities are added to VSCode by installing two plugins, GitHub Copilot and GitHub Copilot chat.
+- Consider and configure the level of privacy for Copilot by configuring it within your account at GitHub's website.
+- Generally, it's recommended to disable `Suggestions matching public code` at a minimum to avoid it making use of public code sources in a way that isn't properly licensed.
+- Copilot has three modes of operation: Ask, Edit and Agent, each delegating a higher degree of autonomy to Copilot.
+- Due to the way LLMs process requests, responses based on the same question will likely show differences.
+- To write a good chat response, be specific and add as much context as possible.
+- Add context to a prompt by including `#` followed by the context, e.g. `#inflammation-plot.py` or `#codebase'`.
+- Personalise Copilot's context by creating an `.github/.copilot-instructions.md` file.
+- Explicitly deny (or allow) Copilot to use specific file types by editing or adding `github.copilot.enable` in `settings.json`.
+- Due to the way LLMs work, there is no "rationale" behind Copilot's responses.
+- Check Copilot's usage for inline suggestions and chat messages within your current tier by selecting it's icon in the status bar.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
