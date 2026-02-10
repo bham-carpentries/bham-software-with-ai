@@ -312,7 +312,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>How to use Copilot to Improve an Existing Codebase</h1>
-        <p>Last updated on 2026-02-06 |
+        <p>Last updated on 2026-02-10 |
 
         <a href="https://github.com/carpentries/workbench-template-md/edit/main/episodes/04-use-copilot-improve-code.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -349,8 +349,6 @@ from Copilot</li>
 <li>Use Copilot to add a new, small feature to an existing codebase</li>
 <li>Describe how to use Copilot to assist with Git commit messages</li>
 <li>Create and use a reusable prompt context</li>
-<li>Create an VSCode Agent Skill to define a specialised and reusable
-domain-specific task</li>
 </ul></div>
 </div>
 </div>
@@ -1309,7 +1307,29 @@ you think about what is generated:</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>FIXME</li>
+<ul><li>Inline suggestions are made by Copilot as “ghosted text” in the
+editor which you autocomplete with the <code>Tab</code> key.</li>
+<li>Copilot can suggest small-scale modifications for your approval
+based on a segment of code by selecting the code and using
+<code>Edit</code> mode in the chat window (or pressing
+<code>Ctrl + I</code> or <code>Cmd/Windows Key + I</code>) and entering
+a request.</li>
+<li>Always review and never blindly accept AI-generated code
+suggestions.</li>
+<li>Copilot can write summary Git commit messages for us in VSCode by
+selecting the sparkle icon next to the commit message text box in the
+<code>Source control</code> navigation tab.</li>
+<li>Agent mode can suggest larger-scale modifications to our code across
+multiple files by using <code>Agent</code> mode in the chat window, and
+entering a more comprehensive and complex request.</li>
+<li>Select <code>Retry</code> to have Copilot re-generated a
+response.</li>
+<li>It’s important to consider how to include AI-based coding assistants
+in your day-to-day development process to ensure accountability,
+quality, and sustainability are maintained within a codebase.</li>
+<li>Reusable prompts in VSCode Copilot are predefined instructions or
+templates that you can quickly insert and use to guide Copilot’s code
+generation or assistance.</li>
 </ul></div>
 </div>
 </div>
@@ -1378,7 +1398,7 @@ any links that you are not going to use.
   "url": "https://carpentries.github.io/workbench-template-md/instructor/04-use-copilot-improve-code.html",
   "identifier": "https://carpentries.github.io/workbench-template-md/instructor/04-use-copilot-improve-code.html",
   "dateCreated": "2026-01-13",
-  "dateModified": "2026-02-06",
+  "dateModified": "2026-02-10",
   "datePublished": "2026-02-10"
 }
 
