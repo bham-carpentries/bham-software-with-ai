@@ -391,15 +391,27 @@ working.</p>
 <ol style="list-style-type: decimal"><li>Firstly, select the extensions icon, then type in “Copilot” into the
 search box at the top, and it’ll give you a list of all Copilot-related
 extensions.</li>
-<li>Select the one which says <code>GitHub Copilot</code> from
-Microsoft, which is the Microsoft official Copilot extension. You may
-also see the <code>GitHub Copilot Chat</code> extension, which will be
-automatically installed along with this one.</li>
+<li>Select the one which says <code>GitHub Copilot</code> from GitHub,
+which is the official Copilot extension. You may also see the
+<code>GitHub Copilot Chat</code> extension, which will be automatically
+installed along with this one.</li>
 <li>Select <code>Install</code>. It might take a minute - you can see a
 sliding blue line in the top left to indicate it’s working.</li>
 <li>You’ll be presented with a “Welcome” page for the extension which
 covers the main features. Select <code>Mark Done</code>.</li>
-</ol><p>Now we have the extension installed, but we need to associate it with
+</ol><div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Checkpoint: I’ve installed the GitHub Copilot extension </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
+<p>Now we have the extension installed, but we need to associate it with
 our GitHub account by signing in:</p>
 <ol style="list-style-type: decimal"><li>Select the <code>Signed out</code> button in the bottom right of the
 VSCode status bar, and <code>Sign in to use AI Features</code>.</li>
@@ -414,6 +426,18 @@ action.</li>
 select <code>Open Link</code>.</li>
 </ol><p>Once completed, you’ll now be able to use GitHub Copilot within
 VSCode.</p>
+<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Checkpoint: I’ve logged the Copilot extension into my GitHub account </h3>
+</button>
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
 <div id="decide-on-copilot-privacy-settings" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -443,6 +467,18 @@ licensed. In addition, it’s recommended to disable the other two
 (depending on the extent you trust GitHub and their affiliates), since -
 as it clearly states - they allow GitHub and others to use data and code
 snippets for product improvements.</p>
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Checkpoint: I’ve configured my privacy settings </h3>
+</button>
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -480,12 +516,12 @@ code:</p>
 <code>Ask</code> - designed for learning and orienting yourself with
 existing code without changing it.</li>
 <li>
-<code>Edit</code> - proposes concrete code changes for your approval
-based on your instructions. It’s useful when you already understand a
-codebase that you want to change.</li>
+<code>Agent</code> - proposes concrete code changes for your
+approval based on your instructions. It’s useful when you already
+understand a codebase that you want to change.</li>
 <li>
-<code>Agent</code> - the most powerful mode, which lets you specify
-a high-level prompt to allow Copilot at a high level of autonomy to plan
+<code>Plan</code> - the most powerful mode, which lets you specify a
+high-level prompt to allow Copilot at a high level of autonomy to plan
 changes in steps, select files, and run tools or terminal commands,
 iterating on code edits until it is complete.</li>
 </ul><p>Since we want to ask questions regarding our codebase, let’s set the
@@ -495,7 +531,8 @@ this is set to <code>Auto</code> so that Copilot will decide the model.
 However, for consistency in this training, let’s select the entry for
 <code>Claude Haiki 4.5</code>.</p>
 <p>Select the <code>inflammation-plot.py</code> file in the File
-Explorer.</p>
+Explorer. You’ll notice this appears as “context” at the top of the chat
+box. Essentially, this is what we’re asking questions about.</p>
 <p>Let’s now ask the very high level question:
 <code>What does this code do?</code>, and press enter. You’ll likely be
 asked whether you want to enable Claude Haiku 4.5 for all clients -
@@ -543,8 +580,8 @@ increasingly different result.</p>
 <div class="callout-content">
 <p>AI tools work best with context, so it’s good to be as specific and
 concise as possible.</p>
-<p>It’s also a good idea to be provide simple questions, so if you end
-up with a question that is decomposable into separate steps, ask each
+<p>It’s also a good idea to provide simple questions, so if you end up
+with a large question that is decomposable into separate steps, ask each
 step separately and you’ll typically get a better outcome. This implies
 that it’s good to use a logical, iterative process of using AI to
 assist, using responses to simple questions to inform the next question,
@@ -569,12 +606,13 @@ context as you can.</p>
 <p>To add context to a chat prompt you can type <code>#</code> followed
 by the context item you want to add, such as a file, folder, tools, code
 elements (such as variables, functions or classes), tools, amongst
-others. For example, we could type <code>#inflammation-plot.py</code> to
-ensure only responses relevant to that specific file will be generated.
-We could use <code>#codebase</code> if we aren’t sure which files are
-relevant to our question, to include all our files. Of course, our code
-may make use of sensitive data files that we don’t want Copilot to use,
-which we’ll look at shortly.</p>
+others. Then press <code>Tab</code> to confirm. For example, we could
+type <code>#inflammation-plot.py</code> to ensure only responses
+relevant to that specific file will be generated. We could use
+<code>#codebase</code> if we aren’t sure which files are relevant to our
+question, to include all our files. Of course, our code may make use of
+sensitive data files that we don’t want Copilot to use, which we’ll look
+at shortly.</p>
 <p>Another thing to remember is how the context of each chat informs the
 flow of questions. Copilot chat uses the history of a chat thread to get
 context about your request. To ensure you only provide the context you
@@ -584,12 +622,12 @@ useful.</p>
 </div>
 </div>
 </div>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor4" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor4" aria-expanded="false" aria-controls="collapseInstructor4">
+  <h3 class="accordion-header" id="headingInstructor4">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor4" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor4" aria-labelledby="headingInstructor4">
 <div class="accordion-body">
 <p>For the next exercise, in the shared notes document have a section
 for participants to add in answers.</p>
@@ -605,6 +643,7 @@ for participants to add in answers.</p>
 <div id="improving-a-chat-prompt" class="callout-inner">
 <h3 class="callout-title">Improving a Chat Prompt</h3>
 <div class="callout-content">
+<p>3 mins.</p>
 <p>A researcher asks two questions of a particular codebase:</p>
 <ul><li>“What does this do?”</li>
 <li>“What’s wrong with this code it doesn’t work”</li>
@@ -679,17 +718,17 @@ what we need (as we would in an a typical conversation).</p>
 </div>
 </div>
 </div>
-<div id="why-arent-i-seeing-the-same-results-for-the-same-question" class="callout">
+<div id="why-arent-i-seeing-the-same-results-for-the-same-question-on-the-same-machine" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <span class="callout-header">Callout</span>
-<div id="why-arent-i-seeing-the-same-results-for-the-same-question" class="callout-inner">
+<div id="why-arent-i-seeing-the-same-results-for-the-same-question-on-the-same-machine" class="callout-inner">
 <h3 class="callout-title">Why Aren’t I Seeing the Same Results for the
-Same Question?</h3>
+Same Question on the Same Machine?</h3>
 <div class="callout-content">
 <p>Sometimes, you may ask the same question and get a different
-response.</p>
+response, even on the same machine in the same editor.</p>
 <p>As we’ve mentioned, LLMs are non-deterministic, in that the same
 question can produce different answers. In addition to it’s probablistic
 nature, there are other reasons for these differences:</p>
@@ -709,7 +748,7 @@ underlying models are updated</li>
 <p>GitHub Copilot can be personalised by adding a instructions file to a
 repository that tells Copilot how you want it to behave in that
 project.</p>
-<p>The file acts as standing, project-level guidance for Copilot,
+<p>The file acts as persistent, project-level guidance for Copilot,
 covering things like:</p>
 <ul><li>Preferred architecture and design patterns</li>
 <li>Coding style and naming conventions</li>
@@ -752,6 +791,18 @@ the instructions file</li>
 </ol><p>Note that it may request access to run a Bash command in the
 <code>data</code> directory, from which it can then ascertain the
 structure of the data, which you’ll have to approve.</p>
+<div id="accordionInstructor5" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor5" aria-expanded="false" aria-controls="collapseInstructor5">
+  <h3 class="accordion-header" id="headingInstructor5">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Checkpoint: I’ve generated a Copilot instructions file </h3>
+</button>
+<div id="collapseInstructor5" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor5" aria-labelledby="headingInstructor5">
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
 <p>We’ll look at the contents of the file in a moment.</p>
 <p>You may also see some feedback questions, such as:</p>
 <pre><code>1. Should I add more detail about the other datasets (climate data, coordinates), or keep focus only on the inflammation data workflow?
@@ -766,9 +817,6 @@ see some things to note:</p>
 <ul><li>Content is highlighted with a <code>Keep / Undo</code> option. This
 is VSCode’s way of highlighting the changes Copilot has made as
 suggestions, so that you explicitly review and approve them.</li>
-<li>Directory names may appear strangely located
-(e.g. <code>../data/</code>), since these are file references relative
-to the location of the instructions file.</li>
 <li>A summary of the main code entry point, the data source directory,
 and the overall workflow of the application</li>
 <li>A section on the code patterns and conventions, essentially
@@ -806,7 +854,7 @@ Palette</p></li>
 <code>Preferences: Open User Settings (JSON)</code></p></li>
 <li>
 <p>In the <code>settings.json</code> file that appears, add the
-following:</p>
+following and save the file:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">YAML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -817,9 +865,22 @@ following:</p>
 </div>
 </li>
 </ol><p>This will have the effect of potentially including all file types in
-context by default, but not CSV files. If you wanted a stricter “default
-deny” approach instead, you could specify <code>false</code> for
-<code>*</code> and enable each filetype explicitly.</p>
+context by default, but not CSV files.</p>
+<div id="accordionInstructor6" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor6" aria-expanded="false" aria-controls="collapseInstructor6">
+  <h3 class="accordion-header" id="headingInstructor6">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Checkpoint: I’ve disabled the inclusion of csv files </h3>
+</button>
+<div id="collapseInstructor6" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor6" aria-labelledby="headingInstructor6">
+<div class="accordion-body">
+
+</div>
+</div>
+</div>
+</div>
+<p>If you wanted a stricter “default deny” approach instead, you could
+specify <code>false</code> for <code>*</code> and enable each filetype
+explicitly.</p>
 <p>There are stricter controls, including some that allow exclusion by
 directory specifications, but these are currently limited to Copilot
 Business users for their repositories and organisations.</p>
@@ -846,7 +907,7 @@ Model?</h3>
 <div class="callout-content">
 <p>Next to each model you’ll see an <code>x</code> figure,
 e.g. <code>1x</code>. This is a multiplier related to the “cost” of
-using this model within our quota of requests. So models with a
+using this model within our quota of premium requests. So models with a
 <code>2x</code> beside them will cost twice as much as one with
 <code>1x</code>.</p>
 <p>It’s important to be clear on the relative cost, since our quotas
@@ -854,12 +915,12 @@ will be consumed more quickly with higher cost multipliers!</p>
 </div>
 </div>
 </div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor7" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor7" aria-expanded="false" aria-controls="collapseInstructor7">
+  <h3 class="accordion-header" id="headingInstructor7">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor7" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor7" aria-labelledby="headingInstructor7">
 <div class="accordion-body">
 <p>Following the exercise below, talk through the possible solutions,
 highlighting the key similarities and differences between each
@@ -877,17 +938,19 @@ response.</p>
 <h3 class="callout-title">Asking Copilot to Suggest Improvements</h3>
 <div class="callout-content">
 <p>10 mins.</p>
-<p>Ensuring you have the <code>Ask</code> mode selected in the chat
-box:</p>
-<ul><li>Select one of the <code>Claude Haiku 4.5</code> or
+<ul><li>Select <code>+</code> to create a new chat conversation</li>
+<li>Ensure you have the <code>Ask</code> mode selected in the chat box,
+and the <code>inflammation-plot.py</code> file open and selected in the
+code editor</li>
+<li>Select one of the <code>Claude Haiku 4.5</code> or
 <code>GPT-5 mini</code> models in the model dropdown.</li>
 <li>Choose a prompt to ask Copilot how to improve this code, e.g.:
 <ul><li><code>How can I make this code more readable?</code></li>
 <li><code>How should I refactor this code to be more modular?</code></li>
 <li><code>What can I do to improve this code?</code></li>
 </ul></li>
-</ul><p>Repeat this for the other model types, asking the same exact question
-each time:</p>
+</ul><p>Repeat this for the other model, asking the same exact question each
+time:</p>
 <ol style="list-style-type: decimal"><li>What answer does each model give you?</li>
 <li>How are these responses similar?</li>
 <li>How are these responses different?</li>
@@ -1033,12 +1096,12 @@ end</li>
 </div>
 </div>
 </div>
-<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor8" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
-  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor8" aria-expanded="false" aria-controls="collapseInstructor8">
+  <h3 class="accordion-header" id="headingInstructor8">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
+<div id="collapseInstructor8" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor8" aria-labelledby="headingInstructor8">
 <div class="accordion-body">
 <p>For the next exercise, add two sections - one each for Benefits and
 Risks, so that participants can add their own comments to each
@@ -1056,7 +1119,7 @@ category.</p>
 <h3 class="callout-title">Class Discussion: What are the Benefits and
 Risks?</h3>
 <div class="callout-content">
-<p>10 mins.</p>
+<p>5 mins.</p>
 <p>Having used some of the features of Copilot, what do <em>you</em>
 think are:</p>
 <ul><li>The benefits are of using it?</li>
@@ -1093,6 +1156,8 @@ detect</li>
 <li>Risks licensing or provenance uncertainty if not reviewed</li>
 <li>Reinforce poor existing patterns in the codebase</li>
 <li>Can deskill developers if used uncritically</li>
+<li>Risks generating incorrect output data which ends up in a research
+publication</li>
 </ul></div>
 </div>
 </div>
