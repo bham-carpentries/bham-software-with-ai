@@ -22,12 +22,23 @@ The list of authors of the course is available in [CITATION.cff](CITATION.cff).
 
 Current maintainers of this lesson are:
 
-* [Steve Crouch](https://github.com/steve-crouch)
+* [Kamilla Kopec-Harding](https://github.com/kkh451)
 
 ## Contact
 
-Please get in touch with [Steve Crouch](sc16@soton.ac.uk) with any questions about this lesson.
+Please get in touch with [Kamilla Kopec-Harding](k.r.kopec-harding@bham.ac.uk) with any questions about this lesson.
 
 ## Acknowledgements
 
-These training materials were developed by the **Southampton Research Software Group**. The development of this course was funded through the EPSRC Doctoral Landscape Award EP/Z534894/1 2025 additional skills funding underpinning the pipeline for AI skills.
+These training materials are adapted from an existing course [Developing Research Software with AI Tools]("https://southampton-rsg-training.github.io/research-software-ai-tools")
+developed by the **Southampton Research Software Group** and currently maintained by:
+* [Steve Crouch](https://github.com/steve-crouch) who can be contacted at [Steve Crouch](sc16@soton.ac.uk)
+* Please get in touch with [Steve Crouch](sc16@soton.ac.uk) with any questions about the original lesson.
+
+
+The development of the original  course was funded through the EPSRC Doctoral Landscape Award EP/Z534894/1 2025 additional skills funding underpinning the pipeline for AI skills.
+
+Changes to the original materials are recorded in ATTRIBUTION.md.
+
+Setup instructions have been adapted from an existing course [Building Better Research Software](https://carpentries-incubator.github.io/better-research-software) under CC-BY-4.0. 
+

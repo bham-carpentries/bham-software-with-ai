@@ -166,7 +166,7 @@ and change our directory to the repository contents:
 
 ```bash
 cd
-git clone https://github.com/Southampton-RSG-Training/ai-tools-example.git
+git clone https://github.com/bham-carpentries/ai-tools-example.git 
 cd ai-tools-example
 ```
 
@@ -302,7 +302,7 @@ Note that we're looking for the *folder* that contains the files, not a specific
 
 If your system has the Git version control system installed, you may see a `Clone Repository` option here too.
 If you are familiar with Git and wish to use this option instead,
-select it and enter the repository's location as `https://github.com/Southampton-RSG-Training/ai-tools-example.git`.
+select it and enter the repository's location as `https://github.com/bham-carpentries/ai-tools-example`
 Then use the file browser that is presented to find a convenient location to store the cloned code and click on `Select as Repository Destination`,
 then select `Open` when ‘Would you like to open the cloned repository?' popup appears.
 
