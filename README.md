@@ -39,3 +39,6 @@ developed by the **Southampton Research Software Group** and currently maintaine
 The development of the original  course was funded through the EPSRC Doctoral Landscape Award EP/Z534894/1 2025 additional skills funding underpinning the pipeline for AI skills.
 
 Changes to the original materials are recorded in ATTRIBUTION.md.
+
+Setup instructions have been adapted from an existing course [Building Better Research Software](https://carpentries-incubator.github.io/better-research-software) under CC-BY-4.0. 
+
