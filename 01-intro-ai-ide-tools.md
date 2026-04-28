@@ -39,8 +39,6 @@ A study also conducted by the Institute also found an exponential increase in th
 
 ![Percentage of research publications with software-related terms 2000-2017, S.J.Hettrick](fig/software-terms-publications.png)
 
-As a specific institutional example, when researchers were asked "how important is research software to your work?" in a software study conducted at the University of Southampton, 73% of respondents indicated that it was "Vital".
-
 For many researchers, writing code for data analysis or software development can be boring, frustrating, or intimidating. 
 Most researchers would rather be thinking about and researching their subject matter rather than spending lots of time learning a programming language and writing code.
 Therefore, with easy access to AI tools, it can be very tempting to ask AI to write your research code for you.
