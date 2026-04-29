@@ -71,6 +71,32 @@ Once completed, you'll now be able to use GitHub Copilot within VSCode.
 
 ::::::::::::::::::::::::::::::::::::::::: 
 
+
+::::::::::::::::::::::::::::::::: callout
+## Disclaimer: Use of GitHub Copilot in This Course (University of Birmingham)
+
+This course introduces AI coding assistants that integrate directly into your
+development environment. We use GitHub Copilot in VS Code for teaching purposes
+because it is widely adopted, well-documented, and easy for learners to set up.
+
+Please note the following important caveats:
+
++ AI-Assisted coding at the University of Birmingham should be used in accordance
+  with the University's Guidance on the Use of AI in Research (see the University's [AI Hub](https://bham.sharepoint.com/sites/ai)
++ GitHub Copilot is not a University-approved AI tool. Its inclusion in this
+course is purely illustrative — it should not be interpreted as an
+endorsement, nor as approval for general use in research activities. 
++ University of Birmingham  policy requires that only approved AI tools be used in research, and GitHub Copilot
+does not currently meet that requirement.
+
+**Continued use of GitHub Copilot after the course using a personal account**  
+should be limited to low-risk situations only. For example, when the code and data you are working
+with are already publicly available under a licence that permits sharing. It
+should not be used with confidential, unpublished, or otherwise sensitive
+research material.
+
+:::::::::::::::::::::::::::::::::::::::::
+
 ::::::::::::::::::::::::::::::::: callout
 
 ## Decide on Copilot Privacy Settings
